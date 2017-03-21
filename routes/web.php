@@ -13,30 +13,18 @@ use App\User;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view("welcome");
 });
 
-Route::get('/prueba/{id?}',function($id=null){
-	return "Estamos en pruebas ".$id;
-});
-
-Route::get('/users',function(){
+Route::get('users',function(){
 	return view('usuarios');
 });
 
-Route::get('/probemos',function(){
-	return view('prueba',['nombre'=>'Sergio','apellido'=>'Benavides']);
+Route::get('nots', function(){
+	return view('notas');
 });
 
-Route::get('/hi/{nombre?}','HomeController@inicio');
-
-Route::get('usuarios',function(){
-	$user=User::create(['name'=>'pepe','email'=>'sergiño@tucaretera','password'=>'123']);
-	$user->save();
-	return $user;
-});
-
-Route::get('/home',function(){
+Route::get('home',function(){
 	return view('home');
 });
 
@@ -45,17 +33,39 @@ Route::get('login',['uses'=>function(){
 },
 'as'=>'inicio']);
 
-Route::get('/users','UserController@index');
+Route::post('login','UserController@login');
 
-Route::get('/posts','PostController@index');
+Route::get('users','UserController@index');
 
-Route::get('posts',[
-	'uses'=>'PostController@index',
-	'as' => 'inicao'
-	]);
+Route::get('nots','NoteController@index');
 
 Route::get('logout','UserController@logout');
  // metodos post
 Route::post('nuevoUsuario', 'UserController@create');
 
-Route::post('login','UserController@login');
+Route::get('crearNota', function(){
+	return view('notes');
+});
+
+Route::post('nota', 'NoteController@create');
+
+// Route::get('/posts','PostController@index');
+
+// Route::get('posts',[
+// 	'uses'=>'PostController@index',
+// 	'as' => 'inicao'
+// 	]);
+
+// Route::get('/probemos',function(){
+// 	return view('prueba',['nombre'=>'Sergio','apellido'=>'Benavides']);
+// });
+
+// Route::get('/hi/{nombre?}','HomeController@inicio');
+
+// Route::get('usuarios',function(){
+// 	$user=User::create(['name'=>'pepe','email'=>'sergiño@tucaretera','password'=>'123', 'lastName'=>'gotera']);
+// 	$user->save();
+// 	return $user;
+// });
+
+

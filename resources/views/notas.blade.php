@@ -8,17 +8,19 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Nombre Completo</th>
-        <th>Email</th>
+        <th>Titulo</th>
+        <th>Mensaje</th>
+        <th>Autor</th>
         <th>Fecha Creacion</th>
       </tr>
     </thead>
     <tbody>
-	@foreach($usuarios as $usuario)
+	@foreach($notas as $nota)
 		<tr>
-			<td>{{$usuario->name}} {{$usuario->lastName}}</td>
-			<td>{{$usuario->email}}</td>
-			<td>{{$usuario->created_at}}</td>
+			<td>{{$nota->titulo}}</td>
+			<td>{{$nota->cuerpo}}</td>
+			<td>{{$nota->user->name}}</td>
+			<td>{{$nota->created_at}}</td>
 		</tr>
 	@endforeach
 	 </tbody>

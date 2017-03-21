@@ -30,9 +30,10 @@ class UserController extends Controller
     public function create(Request $request)
     {
         $user=new User();
-        $user->name=$request->input('nombre');
         $user->email=$request->input('email');
         $user->password=Hash::make($request->input('password'));
+        $user->name=$request->input('nombre');
+        $user->lastName=$request->input('apellido');
         $user->save();
 
         // $user=User::create([
@@ -40,7 +41,7 @@ class UserController extends Controller
         //     'email'=>$request->input('email'),
         //     'password'=>Hash::make($request->input('pasword'))
         //     ]);
-        // return "Usuario registrado";
+        return view('welcome');
     }
 
     /**

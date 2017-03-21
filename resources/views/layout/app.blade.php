@@ -43,23 +43,22 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="/">Notas.com</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="crearNota">Crear Notas</a></li>
+            <li><a href="nots">Notas</a></li>
+            <li><a href="users">Usuarios</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             @if(Auth::guest())
             <li><a href="/login">Iniciar Sesion</a></li>
             @else
-            <li><a href="logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{Auth::user()->name}}</a></li>
-            <form id="logout-form" action="logout" method="POST" style="display: none;">
-              {{csrf_field}}
-            </form>
-            <li><a href="logout">salir</a></li>
+            <div class="navbar-form navbar-right">
+              <div class="btn btn-default">{{Auth::user()->name}}</div>
+              <div class="btn btn-success"><a href="logout">salir</a></div>
+            </div>
             @endif
           </ul>
         </div><!--/.nav-collapse -->
